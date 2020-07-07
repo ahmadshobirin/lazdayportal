@@ -16,7 +16,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('register', 'AuthController@register');
     $router->post('login', 'AuthController@login');
 
-    // $router->group(['middleware' => 'auth'], function () use ($router) {
+    $router->group(['middleware' => 'auth'], function () use ($router) {
         $router->get('/me','AuthController@me');
-    // });
+
+        $router->get('/home','PortalController@home');
+    });
 });

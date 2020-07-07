@@ -15,7 +15,7 @@ class AllSeederDatabase extends Seeder
             [
                 "name"     => "admin",
                 "email"    => "admin@admin.com",
-                "password" => "admin123",
+                "password" => app("hash")->make("admin123"),
                 "created_at" => date('now'),
             ]
         ];
