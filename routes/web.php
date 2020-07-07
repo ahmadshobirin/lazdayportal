@@ -6,8 +6,8 @@ $router->get('/', function () use ($router) {
         "message" => "OK",
         "data"    => [
             "project" => "Lazday Portal",
-            "framewrok_version" => $router->app->version(),
-            "created" => "Ahmad Shobirin"
+            "framework_version" => $router->app->version(),
+            "creator" => "Ahmad Shobirin"
         ],
     ]);
 });
