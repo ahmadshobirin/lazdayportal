@@ -16,8 +16,17 @@ class PortalController extends Controller
                         ->get();
 
         $allCategory = DB::table("category")->orderBy("name")->get();
-        // $lasT = DB::table("category")->orderBy("name")->get();
-        // 3category
+        $lastCategoryNews = DB::table("tag_category_news")
+                            ->select("tag_category_news.id","tag_category_news.category","news.title", "news.image")
+                            ->join("news", "news.id", "tag_category_news.news_id")
+                            ->orderBy("tag_category_news.id", "desc")
+                            ->first();
+
+        $lastCategory = DB::table("category")
+                        ->where("id","<>", $lastCategoryNews->id)
+                        ->orderBy("name")
+                        ->limit(3)
+                        ->get();
 
         return response()->json([
             "status" => 200,
@@ -25,6 +34,8 @@ class PortalController extends Controller
             "data" => [
                 "last_news" => $lastNews,
                 "all_category" => $allCategory,
+                "last_category_news" => $lastCategoryNews,
+                "last_category" => $lastCategory
             ]
         ]);
     }
