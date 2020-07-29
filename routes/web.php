@@ -20,5 +20,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/me','AuthController@me');
 
         $router->get('/home','PortalController@home');
+
+        $router->get('search', 'PortalController@search');
     });
 });

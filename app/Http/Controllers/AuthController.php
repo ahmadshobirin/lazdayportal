@@ -63,8 +63,7 @@ class AuthController extends Controller
             "message" => "OK",
             "data" => [
                 "name"       => Auth::user()->name,
-                "token"      => $token,
-                "token_type" => "Bearer"
+                "token"      => "Bearer $token",
             ]
         ], 200);
     }
